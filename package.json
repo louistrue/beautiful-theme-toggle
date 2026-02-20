@@ -1,0 +1,29 @@
+{
+  "name": "beautiful-theme-toggle",
+  "version": "1.0.0",
+  "description": "A beautiful, animated SVG theme toggle switch with sun/moon transition",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "theme",
+    "toggle",
+    "dark-mode",
+    "light-mode",
+    "svg",
+    "animation"
+  ],
+  "author": "Louis Trümpler",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
