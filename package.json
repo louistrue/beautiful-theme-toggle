@@ -1,6 +1,6 @@
 {
   "name": "beautiful-theme-toggle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A beautiful, animated SVG theme toggle switch with sun/moon transition",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

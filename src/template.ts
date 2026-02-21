@@ -236,7 +236,21 @@ export function getSvgTemplate(): string {
     <circle class="tgl-sun-halo" cx="220" cy="200" r="105" fill="rgba(255,245,157,0.35)" filter="url(#tgl-sun-glow)"/>
     <!-- Moon halo glow -->
     <circle class="tgl-moon-halo" cx="220" cy="200" r="95" fill="rgba(100,149,237,0.25)" filter="url(#tgl-moon-glow)"/>
-    <circle class="tgl-thumb-ring" cx="220" cy="200" r="76" fill="none" stroke="url(#tgl-thumb-ring)" stroke-width="9"/>
+
+    <!-- Moon group -->
+    <g class="tgl-moon">
+      <!-- Moon body -->
+      <circle cx="220" cy="200" r="68" fill="url(#tgl-moon-grad)"/>
+      <path d="M258 200 C258 234 235 258 201 258 C224 243 238 222 238 200 C238 178 224 157 201 142 C235 142 258 166 258 200 Z"
+            fill="rgba(255,255,255,0.24)"/>
+      <!-- Craters -->
+      <circle cx="200" cy="185" r="13" fill="#B0B0B0" opacity="0.35"/>
+      <circle cx="198" cy="183" r="11" fill="#C0C0C0" opacity="0.2"/>
+      <circle cx="242" cy="212" r="9" fill="#B0B0B0" opacity="0.3"/>
+      <circle cx="241" cy="211" r="7" fill="#C0C0C0" opacity="0.15"/>
+      <circle cx="213" cy="235" r="6" fill="#B0B0B0" opacity="0.28"/>
+      <circle cx="238" cy="182" r="5" fill="#B0B0B0" opacity="0.22"/>
+    </g>
 
     <!-- Sun group -->
     <g class="tgl-sun">
@@ -258,20 +272,8 @@ export function getSvgTemplate(): string {
       <circle cx="205" cy="183" r="16" fill="rgba(255,255,255,0.26)"/>
     </g>
 
-    <!-- Moon group -->
-    <g class="tgl-moon">
-      <!-- Moon body -->
-      <circle cx="220" cy="200" r="68" fill="url(#tgl-moon-grad)"/>
-      <path d="M258 200 C258 234 235 258 201 258 C224 243 238 222 238 200 C238 178 224 157 201 142 C235 142 258 166 258 200 Z"
-            fill="rgba(255,255,255,0.24)"/>
-      <!-- Craters -->
-      <circle cx="200" cy="185" r="13" fill="#B0B0B0" opacity="0.35"/>
-      <circle cx="198" cy="183" r="11" fill="#C0C0C0" opacity="0.2"/>
-      <circle cx="242" cy="212" r="9" fill="#B0B0B0" opacity="0.3"/>
-      <circle cx="241" cy="211" r="7" fill="#C0C0C0" opacity="0.15"/>
-      <circle cx="213" cy="235" r="6" fill="#B0B0B0" opacity="0.28"/>
-      <circle cx="238" cy="182" r="5" fill="#B0B0B0" opacity="0.22"/>
-    </g>
+    <!-- Overlay Ring -->
+    <circle class="tgl-thumb-ring" cx="220" cy="200" r="76" fill="none" stroke="url(#tgl-thumb-ring)" stroke-width="9"/>
 
   </g>
 
@@ -366,7 +368,7 @@ ${btn}.tgl-dark .tgl-track-stroke {
 ${btn} .tgl-sun {
   opacity: 1;
   transform: scale(1) rotate(0deg);
-  transform-origin: 220px 200px;
+  transform-origin: center;
   transform-box: fill-box;
   transition: opacity 0.5s ease-in-out, transform 0.7s ease-in-out;
 }
@@ -377,7 +379,8 @@ ${btn}.tgl-dark .tgl-sun {
 
 /* ===== Sun rays rotation ===== */
 ${btn} .tgl-sun-rays {
-  transform-origin: 220px 200px;
+  transform-origin: center;
+  transform-box: fill-box;
   animation: tgl-spin 25s linear infinite;
 }
 @keyframes tgl-spin {
@@ -404,7 +407,7 @@ ${btn}.tgl-dark .tgl-sun-halo {
 ${btn} .tgl-moon {
   opacity: 0;
   transform: scale(0.4) rotate(-180deg);
-  transform-origin: 220px 200px;
+  transform-origin: center;
   transform-box: fill-box;
   transition: opacity 0.5s ease-in-out, transform 0.7s ease-in-out;
 }

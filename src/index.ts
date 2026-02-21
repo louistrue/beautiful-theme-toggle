@@ -5,6 +5,8 @@ export type ThemeState = 'light' | 'dark';
 export interface ThemeToggleOptions {
   /** The container element or a CSS selector string */
   element: HTMLElement | string;
+  /** Width of the toggle (number = px, string = any CSS width value) */
+  size?: number | string;
   /** Starting state — defaults to 'system' (follows OS preference) */
   initialState?: ThemeState | 'system';
   /** Callback fired whenever the toggle state changes */
@@ -40,6 +42,7 @@ export class ThemeToggle {
     this.button.className = `${this.id}-btn`;
     this.button.setAttribute('role', 'switch');
     this.button.setAttribute('aria-label', 'Toggle dark mode');
+    this.button.style.width = this.resolveSize(options.size);
     this.button.innerHTML = getSvgTemplate();
 
     // 3. Mount into the DOM
@@ -50,6 +53,17 @@ export class ThemeToggle {
 
     // 5. Set initial state
     this.initTheme(options.initialState ?? 'system');
+  }
+
+  private resolveSize(size?: number | string): string {
+    if (typeof size === 'number') {
+      return `${size}px`;
+    }
+    if (typeof size === 'string' && size.trim().length > 0) {
+      return size;
+    }
+    // Smaller default width for common app UIs.
+    return '140px';
   }
 
   private injectStyles(): void {

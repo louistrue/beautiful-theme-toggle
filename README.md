@@ -22,6 +22,7 @@ export function ThemeSwitch() {
 
     const toggle = new ThemeToggle({
       element: ref.current,
+      size: 120,
       initialState: 'system',
       onChange: (state) => {
         // Example: Tailwind or custom dark class on root
@@ -32,7 +33,7 @@ export function ThemeSwitch() {
     return () => toggle.destroy();
   }, []);
 
-  return <div style={{ width: 180 }} ref={ref} />;
+  return <div ref={ref} />;
 }
 ```
 
@@ -43,6 +44,7 @@ import { ThemeToggle } from 'beautiful-theme-toggle';
 
 const toggle = new ThemeToggle({
   element: '#toggle-container',
+  size: '8rem', // number = px, string = CSS width value
   initialState: 'system',
   onChange: (state) => {
     document.body.classList.toggle('dark-mode', state === 'dark');
@@ -54,6 +56,7 @@ const toggle = new ThemeToggle({
 
 - `new ThemeToggle(options)`
   - `element`: `HTMLElement | string` (required)
+  - `size`: `number | string` (optional, default: `140px`)
   - `initialState`: `'light' | 'dark' | 'system'` (optional, default: `'system'`)
   - `onChange`: `(state: 'light' | 'dark') => void` (optional)
 - Methods:
